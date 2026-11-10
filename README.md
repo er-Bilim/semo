@@ -1,123 +1,123 @@
-# Semo
+# 🎓 Semo
 
-**Понятный студенческий портал для вузов Кыргызстана.** Баллы, расписание и посещаемость в одном месте, удобно с телефона.
+**A clear, mobile-first student portal for universities in Kyrgyzstan.** Grades, schedule and attendance in one place, designed to work well on a phone. 📱
 
-> Статус: в разработке (MVP)
+> 🚧 Status: in development (MVP)
 
 ---
 
-## Зачем
+## 🤔 Why
 
-Существующие университетские платформы (например, АВН) неудобные: непонятно, где что лежит, с телефона пользоваться тяжело, а как считается итоговый балл, приходится выяснять у старосты.
+Existing university portals (like AVN) are hard to use. It's unclear where things are, they're painful on a phone, and students have to ask their group leader how the final grade is calculated. 😵‍💫
 
-Semo делает обратное:
+Semo takes the opposite approach:
 
-- **Сразу видно главное.** Следующая пара, новые баллы, долги.
-- **Баллы объясняются сами.** Видно, из чего складывается итог и сколько осталось до минимума.
-- **Сначала телефон.** PWA: ставится как приложение и присылает пуши о новых оценках.
+- 🎯 **The important things come first.** Next class, new grades and outstanding debts are visible right away.
+- 🧮 **Grades explain themselves.** You see what your final grade is made of and how many points you still need to reach the minimum.
+- 📲 **Phone first.** It's a PWA, so it installs like an app and sends push notifications for new grades.
 
-## Возможности
+## ✨ Features
 
-### Студент
-- Главная: следующая пара (время, аудитория, преподаватель), сводка по баллам и посещаемости
-- Расписание на день и неделю
-- Оценки по семестрам с разбивкой: Модуль 1, СРС 1, Модуль 2, СРС 2, Сессия
-- Подсказка «до минимума 61 осталось N баллов»
-- Посещаемость по каждому предмету
-- Уведомления о новых баллах и напоминания о парах
+### 🧑‍🎓 Student
+- 🏠 Home: next class (time, room, teacher), plus a summary of grades and attendance
+- 🗓️ Daily and weekly schedule
+- 📊 Grades by semester, broken down into Module 1, Independent Work 1, Module 2, Independent Work 2 and the exam
+- 🎯 "N points left to reach the 61 minimum" hint
+- ✅ Attendance per subject
+- 🔔 Notifications for new grades and class reminders
 
-### Преподаватель
-- Журнал группы: ввод баллов только для открытого контроля, сумма считается сразу
-- Подсветка студентов «под угрозой» (не дотягивают до минимума)
-- Отметка посещаемости с телефона в один тап
-- Список задач: что не выставлено, что не проверено
+### 👩‍🏫 Teacher
+- 📝 Group gradebook: only the currently open assessment is editable, and totals update live
+- ⚠️ At-risk students highlighted (those unlikely to reach the minimum)
+- 👆 One-tap attendance marking from a phone
+- 📋 To-do list: grades not entered yet, work not checked yet
 
-### Администратор вуза
-- Подключение вуза и подтверждение, что заявитель действительно от вуза
-- Структура: факультеты → группы
-- Настраиваемая шкала баллов (части, максимумы, минимальный балл)
-- Приглашение людей: код группы, импорт из Excel, приглашение по email
+### 🏛️ University admin
+- 🔐 University onboarding with ownership verification
+- 🌳 Structure: faculties → groups
+- ⚙️ Configurable grading scheme (components, maximum points, passing minimum)
+- ✉️ Invite people via group code, Excel import or email
 
-## Роли
+## 👥 Roles
 
-| Роль | Доступ |
+| Role | Access |
 |---|---|
-| Владелец вуза | Всё, плюс назначение админов, шкала баллов, удаление вуза |
-| Админ (деканат) | Люди, группы, расписание, семестры; можно ограничить одним факультетом |
-| Преподаватель | Журнал и посещаемость только своих групп и предметов |
-| Староста | Права студента, плюс отметка посещаемости (если разрешил преподаватель) |
-| Студент | Только свои баллы, расписание и посещаемость |
+| 👑 University owner | Everything, plus appointing admins, setting the grading scheme and deleting the university |
+| 🛠️ Admin (dean's office) | People, groups, schedule, semesters; can be limited to one faculty |
+| 👩‍🏫 Teacher | Gradebook and attendance for their own groups and subjects only |
+| 🙋 Group leader | Student access, plus attendance marking (if the teacher allows it) |
+| 🧑‍🎓 Student | Their own grades, schedule and attendance only |
 
-## Подключение вуза
+## 🔐 University onboarding
 
-1. Владелец создаёт вуз: название, домен, рабочая почта.
-2. Подтверждает принадлежность одним из способов:
-   - **DNS**: TXT-запись `_semo-verify` на домене вуза (автоматически);
-   - **Служебная почта**: код на `admin@<домен вуза>`;
-   - **Документы**: приказ или доверенность, ручная проверка.
-3. До подтверждения можно настраивать структуру и шкалу, но нельзя приглашать людей.
-4. После подтверждения можно добавлять преподавателей и студентов.
+1. 🏗️ The owner creates a university: name, domain and work email.
+2. 🪪 They prove they represent the university using one of these methods:
+   - 🌐 **DNS**: a `_semo-verify` TXT record on the university domain (checked automatically);
+   - 📧 **Official email**: a code sent to `admin@<university domain>`;
+   - 📄 **Documents**: an official order or power of attorney, reviewed manually.
+3. ⏳ Before verification, the owner can set up the structure and grading scheme but can't invite anyone.
+4. 🎉 After verification, they can add teachers and students.
 
-## Модель оценивания
+## 🧮 Grading model
 
-Шкала хранится в данных и настраивается под каждый вуз. По умолчанию:
+The grading scheme is stored as data and set per university. The default:
 
 ```
-Модуль 1  20
-СРС 1     20
-Модуль 2  20
-СРС 2     20
-─────────────
-До сессии 80
-Сессия    20
-─────────────
-Итог     100   (минимум — 61)
+Module 1             20
+Independent Work 1   20
+Module 2             20
+Independent Work 2   20
+────────────────────────
+Before exam          80
+Exam                 20
+────────────────────────
+Total               100   (passing minimum: 61)
 ```
 
-## Стек
+## 🛠️ Tech stack
 
-**Backend**
+**⚙️ Backend**
 - FastAPI, Pydantic v2
 - PostgreSQL, SQLAlchemy 2.0 (async), Alembic
-- Redis, arq: фоновые задачи (импорт, рассылки, проверка DNS)
-- JWT: access-токен и refresh-токен в httpOnly cookie
+- Redis and arq for background jobs (imports, email, DNS checks)
+- JWT auth: access token, plus a refresh token in an httpOnly cookie
 - pytest, httpx
 
-**Frontend**
+**🎨 Frontend**
 - React, Vite, TypeScript
 - TanStack Query, TanStack Router
 - Tailwind CSS, Radix UI
 - React Hook Form, Zod
-- openapi-typescript: типы API генерируются из схемы FastAPI
-- PWA и Web Push
+- openapi-typescript, which generates API types from the FastAPI schema
+- PWA with Web Push
 
-**Инфраструктура**
+**🐳 Infrastructure**
 - Docker Compose, Caddy
 - GitHub Actions
 
-## Архитектура
+## 🏗️ Architecture
 
-- **Мультитенантность**: каждая сущность привязана к `university_id`, и каждый запрос фильтруется по вузу.
-- **RBAC**: права проверяются в зависимостях FastAPI по роли и области (вуз или факультет).
-- **Аудит журнала**: любое изменение балла сохраняется с автором и временем.
+- 🏢 **Multi-tenancy**: every entity is tied to a `university_id`, and every query is filtered by it.
+- 🛡️ **RBAC**: FastAPI dependencies check permissions by role and scope (university or faculty).
+- 🕵️ **Gradebook audit log**: every grade change is recorded with its author and timestamp.
 
-## Структура репозитория
+## 📁 Repository structure
 
 ```
 semo/
 ├── backend/
 │   ├── app/
-│   │   ├── api/          # роуты
-│   │   ├── core/         # конфиг, безопасность, права
-│   │   ├── models/       # SQLAlchemy-модели
-│   │   ├── schemas/      # Pydantic-схемы
-│   │   ├── services/     # бизнес-логика
-│   │   └── workers/      # фоновые задачи
+│   │   ├── api/          # routes
+│   │   ├── core/         # config, security, permissions
+│   │   ├── models/       # SQLAlchemy models
+│   │   ├── schemas/      # Pydantic schemas
+│   │   ├── services/     # business logic
+│   │   └── workers/      # background jobs
 │   ├── alembic/
 │   └── tests/
 ├── frontend/
 │   └── src/
-│       ├── api/          # сгенерированный клиент
+│       ├── api/          # generated client
 │       ├── features/     # student / teacher / admin
 │       ├── components/
 │       └── routes/
@@ -125,7 +125,9 @@ semo/
 └── .env.example
 ```
 
-## Запуск локально
+## 🚀 Getting started
+
+> 🔜 Coming soon. These steps will work once the Docker setup lands.
 
 ```bash
 git clone https://github.com/er-Bilim/semo.git
@@ -134,34 +136,34 @@ cp .env.example .env
 docker compose up --build
 ```
 
-- API: http://localhost:8000 (документация: `/docs`)
-- Клиент: http://localhost:5173
+- 🔌 API: http://localhost:8000 (docs at `/docs`)
+- 💻 Client: http://localhost:5173
 
-## Дорожная карта
+## 🗺️ Roadmap
 
-**MVP**
-- [ ] Авторизация и роли
-- [ ] Подключение вуза, подтверждение по служебной почте
-- [ ] Структура: факультеты и группы
-- [ ] Журнал преподавателя
-- [ ] Оценки и расписание студента
-- [ ] Адаптив и PWA
+**🥇 MVP**
+- [ ] Auth and roles
+- [ ] University onboarding with official email verification
+- [ ] Structure: faculties and groups
+- [ ] Teacher gradebook
+- [ ] Student grades and schedule
+- [ ] Responsive layout and PWA
 
-**Дальше**
-- [ ] Подтверждение по DNS и по документам
-- [ ] Импорт студентов из Excel
-- [ ] Посещаемость и роль старосты
-- [ ] Push-уведомления
-- [ ] Интерфейс на кыргызском и английском
+**🔭 Next**
+- [ ] DNS and document verification
+- [ ] Student import from Excel
+- [ ] Attendance and the group leader role
+- [ ] Push notifications
+- [ ] Kyrgyz and English UI
 
-## Дизайн
+## 🎨 Design
 
-Макеты всех экранов (студент, преподаватель, администратор): [ССЫЛКА НА МАКЕТЫ]
+Mockups for every screen (student, teacher, admin): [DESIGN LINK]
 
-## Автор
+## 👋 Author
 
-**Билимбек Эркинбеков**, [@er-Bilim](https://github.com/er-Bilim)
+**Bilimbek Erkinbekov**, [@er-Bilim](https://github.com/er-Bilim)
 
-## Лицензия
+## 📄 License
 
 MIT
